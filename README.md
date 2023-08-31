@@ -1,0 +1,4 @@
+- 👋 Hi, I’m @marinadelvecchio
+- 👀 I’m interested in finding my first software engineering internship
+- 🌱 I’m currently in my senior year at SUNY Brockport pursuing a bachelor's degree in computer science and mathematics with a 3.99 GPA.
+- 💞️ Check out some of my previous projects on my github!
