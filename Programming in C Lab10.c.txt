@@ -1,0 +1,65 @@
+//Marina DelVecchio
+#include <stdio.h>
+#include <ctype.h>
+#include <stdlib.h>
+
+//function to process infile line by line and write in outfile
+void processfile(FILE *outfile, FILE *infile){
+
+    //declaration of variables
+    int temp;
+    int sum;
+    char s [10];
+    int i;
+    char line [80];
+
+    //continue until the end of the file is reached
+    while (fgets (line, 80, infile) != NULL) {
+
+        //converts the leading decimal digits to int and adds them together
+        i = 0;
+        while (isdigit(line[i]) != 0) {
+            s[i] = line[i];
+            i++;
+        }
+        s[i] = '\0';
+        temp = atoi(s);
+        sum += temp;
+
+        //prints remaining characters to outfile
+        int j = i;
+        while (line[j] != '\n') {
+            putc(line[j], outfile);
+            j++;
+        }
+        putc('\n', outfile);
+    }
+
+    //prints sum of ints to outfile
+    fprintf(outfile, "%d", sum);
+}
+
+//main function
+int main (int argc, char *argv [])
+ {
+
+    //check to make sure 2 arguments were passed
+    if(argc != 3) {
+        printf("wrong number of arguments!");
+        return(1);
+    }
+
+    //open files in appropriate modes and call function
+    FILE *out, *in;
+    out = fopen(argv[1], "w");
+    in = fopen(argv[2], "r");
+    processfile(out, in);
+
+    printf("reached end of file.");
+
+    //close files
+    fclose(out);
+    fclose(in);
+
+    return 0;
+}

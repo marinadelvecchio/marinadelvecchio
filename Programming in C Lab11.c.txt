@@ -1,0 +1,61 @@
+//Marina DelVecchio
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+
+    //declaration of variables
+    char c;
+    int spaceCount=0;
+    int digCount=0;
+    int lowCount=0;
+    int upCount=0;
+    char s [100];
+    int i=0;
+
+    //do loop until a z is entered
+    while (c != 'z')
+    {
+        scanf("%c", &c);
+
+        //check for what type of character c is and update counts and output array
+        if(c == 'z') {
+            break;
+        }
+        else if(c == ' ' || c == '\t' || c == '\n') {
+            spaceCount++;
+            s[i] = c;
+        }
+        else if(isdigit(c) != 0) {
+            digCount++;
+            s[i] = c;
+        }
+        else if(islower(c) != 0) {
+            lowCount++;
+            s[i] = toupper(c);
+        }
+        else if(isupper(c) != 0) {
+            upCount++;
+            s[i] = tolower(c);
+        }
+        else {
+            s[i] = c;
+        }
+
+        //increment index counter
+        i++;
+    }
+
+    //print input
+    for(int j=0; j<i-1; j++) {
+        printf("%c", s[j]);
+    }
+
+    //print counts
+    printf("\n The number of whitespace characters is: %d", spaceCount);
+    printf("\nThe number of digits is: %d", digCount);
+    printf("\nThe number of lowercase letters is: %d", lowCount);
+    printf("\nThe number of uppercase letter is: %d\nGoodbye", upCount);
+
+    return 0;
+}
